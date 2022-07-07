@@ -177,7 +177,7 @@ deploy-infrastructure:
             - project/.circleci/ansible/inventory.txt
       # Here's where you will add some code to rollback on failure      
 
-  configure-infrastructure:
+configure-infrastructure:
     docker:
       # Docker image here that supports Ansible
     steps:
@@ -196,7 +196,7 @@ deploy-infrastructure:
             exit 1
       # Here's where you will add some code to rollback on failure      
 
-  run-migrations:
+run-migrations:
     docker:
       # Docker image here that supports NodeJS
     steps:
@@ -213,7 +213,7 @@ deploy-infrastructure:
             exit 1
      # Here's where you will add some code to rollback on failure      
 
-  deploy-frontend:
+deploy-frontend:
     docker:
       # Docker image here that supports AWS CLI
     steps:
@@ -234,7 +234,7 @@ deploy-infrastructure:
             # your code here
       # Here's where you will add some code to rollback on failure      
                     
-  deploy-backend:
+deploy-backend:
     docker:
       # Docker image here that supports Ansible
     steps:
@@ -251,7 +251,7 @@ deploy-infrastructure:
             # your code here
       # Here's where you will add some code to rollback on failure  
 
-  smoke-test:
+smoke-test:
     docker:
       # Lightweight Docker image 
     steps:
@@ -274,7 +274,7 @@ deploy-infrastructure:
             # your code here
       # Here's where you will add some code to rollback on failure  
 
-  cloudfront-update:
+cloudfront-update:
     docker:
       # Docker image here that supports AWS CLI
     steps:
