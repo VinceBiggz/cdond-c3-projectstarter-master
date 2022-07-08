@@ -157,8 +157,7 @@ jobs:
       - run:
           name: Ensure back-end infrastructure exists
           command: |
-             # Your code here
-            exit 1
+            
       - run:
           name: Ensure front-end infrastructure exist
           command: |
