@@ -351,34 +351,34 @@ jobs:
 
   smoke-test:
     docker:
-      - image: python:3.7-alpine3.11
+      # Lightweight Docker image
+      - image: python:3.10-alpine3.16
     steps:
+      # Checkout code from git
       - checkout
       - run:
           name: Install dependencies
           command: |
-            apk add --update tar                        
-            apk add --update gzip 
-            apk add --update nodejs
-            apk add --update npm 
-            apk add --update curl
-            pip3 install --upgrade pip 
-            pip install awscli
+            apk add --update --no-cache curl aws-cli tar gzip nodejs npm
       - attach_workspace:
           at: ~/
       - run:
-          name: backend smoke test
+          name: Backend smoke test.
           command: |
-            export BACKEND_IP=$(tail -1 .circleci/ansible/inventory.txt)
-            echo "BACKEND_IP is ${BACKEND_IP}"
+            export BACKEND_IP=$(aws ec2 describe-instances \
+            --query 'Reservations[*].Instances[*].PublicIpAddress' \
+            --filters Name=tag:aws:cloudformation:stack-name,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7} \
+            --output text)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
-            if curl "${API_URL}/api/status" | grep "ok"
+            # curl "${API_URL}/api/status"
+            if curl -s http://google.com
             then
-              return 0
+                return 0
             else
-              return 1
+                return 1
             fi
+            
       - run:
           name: Frontend smoke test.
           command: |
