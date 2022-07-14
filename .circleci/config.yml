@@ -28,8 +28,8 @@ commands:
           name: Revert migrations
           when: on_fail
           command: |
-            # SUCCESS = curl --insecure  https://kvdb.io/Caj1kcqbbfxchACoRaEwrz/migration_$\{CIRCLE_WORKFLOW_ID:0:7\}
-            SUCCESS=$(curl --insecure  https://kvdb.io/Caj1kcqbbfxchACoRaEwrz/migration_$\{CIRCLE_WORKFLOW_ID:0:7\})
+            # SUCCESS = curl --insecure  https://kvdb.io/PSDG4PvG7jSNpXwY5BPwe6/migration_$\{CIRCLE_WORKFLOW_ID:0:7\}
+            SUCCESS=$(curl --insecure  https://kvdb.io/PSDG4PvG7jSNpXwY5BPwe6/migration_$\{CIRCLE_WORKFLOW_ID:0:7\})
             if(( $SUCCESS=='1')); 
             then
               cd ~/project/backend
@@ -257,9 +257,10 @@ jobs:
           command: |
             cd backend
             npm install
-            npm audit fix --audit-level=critical --force
-            npm audit fix --force
-            npm run migrations > migrations_dump.txt
+            npm run build
+            npm run migrations >> migrations_dump.txt
+            ls -al
+            cat migrations_dump.txt
           no_output_timeout: 30m
       - run:
           name: Send migration status to kvdb.io
