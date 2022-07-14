@@ -1,13 +1,14 @@
 
-> glee2@1.0.0 premigrations /mnt/c/Users/Business Analyst/OneDrive/Documents/GitHub/cdond-c3-projectstarter-master/backend
+> glee2@1.0.0 premigrations /mnt/c/Users/Business Analyst/OneDrive/Documents/Github/cdond-c3-projectstarter-master/backend
 > npm run build
 
 
-> glee2@1.0.0 build /mnt/c/Users/Business Analyst/OneDrive/Documents/GitHub/cdond-c3-projectstarter-master/backend
+> glee2@1.0.0 build /mnt/c/Users/Business Analyst/OneDrive/Documents/Github/cdond-c3-projectstarter-master/backend
 > tsc
 
-
-> glee2@1.0.0 migrations /mnt/c/Users/Business Analyst/OneDrive/Documents/GitHub/cdond-c3-projectstarter-master/backend
-> ts-node -r dotenv/config node_modules/.bin/typeorm migration:run
-
-Error during migration run:
+node_modules/@types/superagent/index.d.ts(23,10): error TS2305: Module '"buffer"' has no exported member 'Blob'.
+src/modules/domain/employees/commands/handlers/employee-birthdate-updater.handler.ts(22,5): error TS2322: Type 'string' is not assignable to type 'Date'.
+src/modules/domain/employees/commands/handlers/employee-effective-date-updater.handler.ts(22,5): error TS2322: Type 'string' is not assignable to type 'Date'.
+src/modules/domain/employees/commands/handlers/employee-updater.handler.ts(50,5): error TS2322: Type 'string' is not assignable to type 'Date'.
+src/modules/domain/employees/commands/handlers/employee-updater.handler.ts(61,5): error TS2322: Type 'string' is not assignable to type 'Date'.
+src/modules/domain/employees/entities/employee.entity.ts(124,3): error TS2322: Type 'string' is not assignable to type 'Date'.
