@@ -25,19 +25,22 @@ commands:
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
     parameters:
-      # Add parameter here
-      workflow_id:
-        type: string
+      when_revert:
+        type: boolean
+        default: true
     steps:
       - run:
           name: Revert migrations
           when: on_fail
-          # Add when this will run
           command: |
-            cd ~/project/backend
-            npm install
-            npm run build
-            npm run migrations:revert
+            # SUCCESS = curl --insecure  https://kvdb.io/PSDG4PvG7jSNpXwY5BPwe6/migration_$\{CIRCLE_WORKFLOW_ID:0:7\}
+            SUCCESS=$(curl --insecure  https://kvdb.io/PSDG4PvG7jSNpXwY5BPwe6/migration_$\{CIRCLE_WORKFLOW_ID:0:7\})
+            if(( $SUCCESS=='1')); 
+            then
+              cd ~/project/backend
+              npm install
+              npm run migrations:revert
+            fi
 
   install_awscli:
     description: Install CLI
