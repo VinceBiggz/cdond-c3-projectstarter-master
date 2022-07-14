@@ -6,7 +6,6 @@
 > glee2@1.0.0 build /mnt/c/Users/Business Analyst/OneDrive/Documents/Github/cdond-c3-projectstarter-master/backend
 > tsc
 
-node_modules/@types/superagent/index.d.ts(23,10): error TS2305: Module '"buffer"' has no exported member 'Blob'.
 src/modules/domain/employees/commands/handlers/employee-birthdate-updater.handler.ts(22,5): error TS2322: Type 'string' is not assignable to type 'Date'.
 src/modules/domain/employees/commands/handlers/employee-effective-date-updater.handler.ts(22,5): error TS2322: Type 'string' is not assignable to type 'Date'.
 src/modules/domain/employees/commands/handlers/employee-updater.handler.ts(50,5): error TS2322: Type 'string' is not assignable to type 'Date'.
